@@ -11,10 +11,12 @@ const MenuItem: FC<MenuItemProps> = ({ href, icon, label }) => {
     <li>
       <Link
         href={href}
-        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+        className="flex items-center p-2 text-neutral-600 rounded-lg bg-gray-100 hover:bg-gray-200"
       >
         {icon}
-        <span className="flex-1 ml-3 whitespace-nowrap">{label}</span>
+        <span className="flex-1 font-normal ml-3 whitespace-nowrap">
+          {label}
+        </span>
       </Link>
     </li>
   );
@@ -28,10 +30,21 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-          <div className="text-center py-3">Nawasena</div>
-          <ul className="space-y-2 font-medium text-white">
-            <MenuItem label="Users" href="/users" icon={<UserIcon />} />
+        <div className="h-full px-3 py-4 overflow-y-auto bg-white">
+          <div className="py-3 mb-2 pb-4 text-2xl text-primary font-bold text-center">
+            Helpin
+          </div>
+          <ul className="space-y-2 font-medium text-neutral-600">
+            <MenuItem
+              label="Penyedia layanan"
+              href="/users/providers"
+              icon={<UserIcon />}
+            />
+            <MenuItem
+              label="Kategori Produk"
+              href="/users/providers"
+              icon={<UserIcon />}
+            />
           </ul>
         </div>
       </aside>

@@ -16,7 +16,7 @@ const useLoginMutation = ({}: UseLoginMutationParams) => {
           payload: data,
         });
 
-        const accessToken = responseToken.data.accessToken;
+        const accessToken = responseToken.data.data.accessToken;
 
         if (!accessToken) {
           throw new Error("Access token not found");

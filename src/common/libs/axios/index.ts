@@ -6,11 +6,13 @@ const user = Cookies.get("user");
 const parsedUser = user ? JSON.parse(user) : null;
 
 const axiosInstance = axios.create({
-  baseURL: "/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 1000,
   headers: {
     "Content-Type": "application/json",
-    ...(parsedUser && { Authorization: `Bearer ${parsedUser.accessToken}` }),
+    ...(parsedUser && {
+      Authorization: `Bearer ${parsedUser?.data?.accessToken}`,
+    }),
   },
 });
 

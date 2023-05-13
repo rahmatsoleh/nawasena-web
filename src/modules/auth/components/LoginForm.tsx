@@ -2,24 +2,28 @@ import { Button, Form, Input, message } from "antd";
 import React from "react";
 import axios from "axios";
 import useLoginMutation from "../hooks/mutations/useLoginMutation";
+import Router from "next/router";
 
 const LoginForm = () => {
   const [form] = Form.useForm();
-  const { mutateAsync } = useLoginMutation({});
+  const { mutateAsync, isLoading } = useLoginMutation({});
 
   const handleSubmit = async (data: any) => {
     try {
-      const response = await mutateAsync({
-        username: data.email as string,
+      await mutateAsync({
+        email: data.email as string,
         password: data.password as string,
       });
-      message.success("Login success");
+
+      Router.push("/");
     } catch (error) {
       console.error(error);
-      // check is axios error
       if (axios.isAxiosError(error)) {
         message.warning(error?.response?.data?.message);
+        return;
       }
+
+      message.error("Something went wrong");
     }
   };
 
@@ -57,9 +61,14 @@ const LoginForm = () => {
             </Form.Item>
           </div>
           <div className="text-center mt-6">
-            <button className="py-3 w-64 text-xl text-white bg-primary rounded-2xl">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="!w-64 !text-white !bg-primary !rounded-2xl"
+              loading={isLoading}
+            >
               Login
-            </button>
+            </Button>
           </div>
         </div>
       </div>

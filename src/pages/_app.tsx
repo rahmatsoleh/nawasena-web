@@ -24,6 +24,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           theme={{
             token: {
               colorPrimary: "#1363DF",
+              fontFamily: "Inter",
             },
           }}
         >
