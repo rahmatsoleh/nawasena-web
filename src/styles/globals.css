@@ -10,3 +10,7 @@ html {
 body {
   background: #f5f4f7;
 }
+
+.ant-btn-primary {
+  @apply bg-primary;
+}
