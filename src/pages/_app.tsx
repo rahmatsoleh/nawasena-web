@@ -1,21 +1,37 @@
 // import "antd/dist/reset.css";
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+
 import {
   Hydrate,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { useState } from "react";
+import { AppPropsWithLayout } from "@/common/types";
+import { ConfigProvider } from "antd";
+import MainLayout from "@/components/layouts/MainLayout";
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const [queryClient] = useState(() => new QueryClient());
+
+  const getLayout =
+    Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#1363DF",
+            },
+          }}
+        >
+          {getLayout(<Component {...pageProps} />)}
+        </ConfigProvider>
       </Hydrate>
     </QueryClientProvider>
   );
-}
+};
+
+export default App;

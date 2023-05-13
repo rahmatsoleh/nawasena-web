@@ -6,3 +6,7 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+LoginPage.getLayout = (page: any) => {
+  return <>{page}</>;
+};
