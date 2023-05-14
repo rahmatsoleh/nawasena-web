@@ -42,7 +42,7 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
             />
             <MenuItem
               label="Kategori"
-              href="/users/providers"
+              href="/category-product"
               icon={<CategoryIcon />}
             />
           </ul>
