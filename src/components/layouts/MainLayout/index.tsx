@@ -31,8 +31,8 @@ const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-white">
-          <div className="py-3 mb-2 pb-4 text-2xl text-primary font-bold text-center">
-            Helpin
+          <div className="py-3 flex justify-center mb-2 pb-4 text-2xl text-primary font-bold text-center">
+            <img src="/logo.png" className="h-10 w-auto" alt="Logo" />
           </div>
           <ul className="space-y-2 font-medium text-neutral-600">
             <MenuItem
